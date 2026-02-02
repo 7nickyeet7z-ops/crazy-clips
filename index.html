@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Crazy Clips</title>
+  <style>
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;max-width:900px;margin:40px auto;padding:0 16px;line-height:1.45}
+    code{background:#f3f3f3;padding:2px 6px;border-radius:6px}
+    .box{border:1px solid #ddd;border-radius:12px;padding:16px;margin:16px 0}
+    h1{margin:0 0 8px} h2{margin:22px 0 8px}
+    ul{margin:8px 0 0 18px}
+    .muted{color:#555;font-size:14px}
+  </style>
+</head>
+<body>
+  <h1>Crazy Clips</h1>
+  <p class="muted"><b>Crazy Clips</b> — private tool to generate short clips and upload drafts to TikTok Inbox for manual posting.</p>
+
+  <div class="box">
+    <h2>What this app does</h2>
+    <ul>
+      <li>Uses a long-format video created by user and generates short vertical clips.</li>
+      <li>Creates subtitles and a caption suggestion for each clip.</li>
+      <li>Uploads each clip as a <b>draft</b> to the user’s TikTok Inbox using TikTok API.</li>
+      <li>User manually reviews/edits and posts inside TikTok.</li>
+    </ul>
+  </div>
+
+  <div class="box">
+    <h2>TikTok API Products & Scopes used</h2>
+    <ul>
+      <li><b>Login Kit</b>: authenticate the user.</li>
+      <li><b>Content Posting (Draft/Inbox Upload)</b>: uploads videos to Inbox (no auto-publish).</li>
+      <li>Scopes: <code>user.info.basic</code>, <code>video.upload</code> (draft upload)</li>
+    </ul>
+  </div>
+
+  <div class="box">
+    <h2>Data handling</h2>
+    <ul>
+      <li>Tokens are stored locally on the user’s machine.</li>
+      <li>Videos are processed locally and then uploaded to TikTok Inbox.</li>
+      <li>After successful upload, files can be archived/deleted by the user’s settings.</li>
+    </ul>
+  </div>
+
+  <div class="box">
+    <h2>Website URL</h2>
+    <p class="muted">GitHub Pages: <code>https://YOUR_GITHUB_USERNAME.github.io/crazy-clips/</code></p>
+  </div>
+
+  <div class="box">
+    <h2>Contact</h2>
+    <p>Email: <b>YOUR_EMAIL_HERE</b></p>
+  </div>
+
+  <p class="muted">Last updated: 2026-02-01</p>
+</body>
+</html>
