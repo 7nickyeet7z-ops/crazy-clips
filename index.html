@@ -8,53 +8,182 @@
     body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;max-width:900px;margin:40px auto;padding:0 16px;line-height:1.45}
     code{background:#f3f3f3;padding:2px 6px;border-radius:6px}
     .box{border:1px solid #ddd;border-radius:12px;padding:16px;margin:16px 0}
-    h1{margin:0 0 8px} h2{margin:22px 0 8px}
+    h1{margin:0 0 8px} h2{margin:22px 0 8px} h3{margin:18px 0 8px}
     ul{margin:8px 0 0 18px}
     .muted{color:#555;font-size:14px}
+    .nav{display:flex;gap:14px;flex-wrap:wrap;margin:10px 0 18px}
+    .nav a{color:#0b57d0;text-decoration:none}
+    .nav a:hover{text-decoration:underline}
+    .pill{display:inline-block;background:#111;color:#fff;border-radius:999px;padding:4px 10px;font-size:12px;margin-left:8px}
+    .small{font-size:13px}
+    hr{border:none;border-top:1px solid #eee;margin:24px 0}
   </style>
 </head>
 <body>
-  <h1>Crazy Clips</h1>
-  <p class="muted"><b>Crazy Clips</b> — private tool to generate short clips and upload drafts to TikTok Inbox for manual posting.</p>
+  <h1>Crazy Clips <span class="pill">Private Tool</span></h1>
+  <p class="muted">
+    Crazy Clips is a private, local tool that generates short clips and uploads them to the user’s TikTok Inbox as drafts for manual posting.
+  </p>
 
-  <div class="box">
-    <h2>What this app does</h2>
+  <!-- Visible, clickable links (TikTok reviewer requirement) -->
+  <nav class="nav" aria-label="Legal and page navigation">
+    <a href="#overview">Overview</a>
+    <a href="#products">TikTok API Products & Scopes</a>
+    <a href="#data">Data Handling</a>
+    <a href="#privacy">Privacy Policy</a>
+    <a href="#terms">Terms of Service</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <div id="overview" class="box">
+    <h2>What Crazy Clips does</h2>
     <ul>
-      <li>Uses a long-format video created by user and generates short vertical clips.</li>
-      <li>Creates subtitles and a caption suggestion for each clip.</li>
-      <li>Uploads each clip as a <b>draft</b> to the user’s TikTok Inbox using TikTok API.</li>
-      <li>User manually reviews/edits and posts inside TikTok.</li>
+      <li>Processes user's long-form videos locally to generate short vertical clips.</li>
+      <li>Creates subtitles and a suggested caption for each clip.</li>
+      <li>Uploads each clip as a <b>draft</b> to the user’s TikTok Inbox using the TikTok API.</li>
+      <li>The user reviews/edits and posts inside TikTok (no automatic publishing).</li>
     </ul>
+    <p class="muted small">
+      This tool is intended for the account owner’s use and runs on the user’s own machine.
+    </p>
   </div>
 
-  <div class="box">
-    <h2>TikTok API Products & Scopes used</h2>
+  <div id="products" class="box">
+    <h2>TikTok API Products & scopes used</h2>
     <ul>
-      <li><b>Login Kit</b>: authenticate the user.</li>
-      <li><b>Content Posting (Draft/Inbox Upload)</b>: uploads videos to Inbox (no auto-publish).</li>
-      <li>Scopes: <code>user.info.basic</code>, <code>video.upload</code> (draft upload)</li>
+      <li><b>Login Kit</b>: authenticates the user and obtains authorization.</li>
+      <li><b>Content Posting (Inbox/Draft Upload)</b>: uploads videos to the user’s TikTok Inbox as drafts.</li>
     </ul>
+
+    <h3>Scopes</h3>
+    <ul>
+      <li><code>user.info.basic</code> — used to confirm the authenticated account.</li>
+      <li><code>video.upload</code> — used to upload videos to TikTok Inbox as drafts.</li>
+    </ul>
+
+    <p class="muted small">
+      Crazy Clips does not auto-publish content. Posting happens manually inside the TikTok app by the user.
+    </p>
   </div>
 
-  <div class="box">
+  <div id="data" class="box">
     <h2>Data handling</h2>
     <ul>
-      <li>Tokens are stored locally on the user’s machine.</li>
-      <li>Videos are processed locally and then uploaded to TikTok Inbox.</li>
-      <li>After successful upload, files can be archived/deleted by the user’s settings.</li>
+      <li><b>Authentication tokens</b> are stored locally on the user’s device.</li>
+      <li><b>Video processing</b> (clip creation/subtitles/captions) happens locally.</li>
+      <li><b>Uploads</b> send the final clip files to TikTok Inbox via the API.</li>
+      <li>After successful upload, the tool may <b>archive</b> processed files locally (optional).</li>
     </ul>
+    <p class="muted small">
+      Crazy Clips does not sell data and is not a consumer-facing service.
+    </p>
   </div>
 
-  <div class="box">
-    <h2>Website URL</h2>
-    <p class="muted">GitHub Pages: <code>https://YOUR_GITHUB_USERNAME.github.io/crazy-clips/</code></p>
+  <hr />
+
+  <!-- Privacy Policy -->
+  <div id="privacy" class="box">
+    <h2>Privacy Policy</h2>
+    <p class="small">
+      <b>Effective date:</b> 2026-02-02
+    </p>
+
+    <h3>1) Who we are</h3>
+    <p class="small">
+      Crazy Clips is a private tool used by its account owner to edit their videos and send to TikTok Inbox.
+    </p>
+
+    <h3>2) Information we collect</h3>
+    <ul class="small">
+      <li><b>TikTok authorization tokens</b> (access/refresh tokens) stored locally on the user’s machine.</li>
+      <li><b>Local files</b> created during processing (clips, subtitles, caption sidecar text, logs).</li>
+    </ul>
+
+    <h3>3) How we use information</h3>
+    <ul class="small">
+      <li>To authenticate with TikTok and upload draft videos to the user’s TikTok Inbox.</li>
+      <li>To keep a local processing log and avoid re-processing already completed work.</li>
+    </ul>
+
+    <h3>4) Sharing</h3>
+    <p class="small">
+      Crazy Clips does not share personal information with third parties, except that uploaded media is transmitted to TikTok for the purpose of placing drafts into the user’s Inbox.
+    </p>
+
+    <h3>5) Storage and security</h3>
+    <p class="small">
+      Tokens and logs are stored locally. The user is responsible for device security and access control.
+    </p>
+
+    <h3>6) Retention</h3>
+    <p class="small">
+      Processed videos and logs remain on the user’s device until archived or deleted by the user’s settings/workflow.
+    </p>
+
+    <h3>7) Contact</h3>
+    <p class="small">
+      If you have questions about this Privacy Policy, contact: <b>7nickyeet7z@gmail.com</b>
+    </p>
   </div>
 
-  <div class="box">
+  <!-- Terms of Service -->
+  <div id="terms" class="box">
+    <h2>Terms of Service</h2>
+    <p class="small">
+      <b>Effective date:</b> 2026-02-02
+    </p>
+
+    <h3>1) Acceptance</h3>
+    <p class="small">
+      By using Crazy Clips, you agree to these Terms.
+    </p>
+
+    <h3>2) Description of service</h3>
+    <p class="small">
+      Crazy Clips processes videos locally and uploads drafts to the user’s TikTok Inbox via the TikTok API. The user manually posts content from within TikTok.
+    </p>
+
+    <h3>3) User responsibilities</h3>
+    <ul class="small">
+      <li>You are responsible for the content you process and upload.</li>
+      <li>You must comply with TikTok’s terms, policies, and applicable laws.</li>
+      <li>You must secure your device and keep tokens confidential.</li>
+    </ul>
+
+    <h3>4) No automatic publishing</h3>
+    <p class="small">
+      Crazy Clips does not automatically publish videos. Uploads are delivered as drafts (Inbox) for manual review and posting.
+    </p>
+
+    <h3>5) Disclaimer</h3>
+    <p class="small">
+      Crazy Clips is provided “as is” without warranties of any kind. Availability and functionality may depend on TikTok APIs and third-party services.
+    </p>
+
+    <h3>6) Limitation of liability</h3>
+    <p class="small">
+      To the maximum extent permitted by law, Crazy Clips is not liable for any indirect, incidental, or consequential damages arising from use of the tool.
+    </p>
+
+    <h3>7) Changes</h3>
+    <p class="small">
+      These Terms may be updated by posting an updated version on this page.
+    </p>
+
+    <h3>8) Contact</h3>
+    <p class="small">
+      Questions: <b>7nickyeet7z@gmail.com</b>
+    </p>
+  </div>
+
+  <div id="contact" class="box">
     <h2>Contact</h2>
-    <p>Email: <b>YOUR_EMAIL_HERE</b></p>
+    <p>Email: <b>7nickyeet7z@gmail.com</b></p>
+    <p class="muted small">
+      Repository: <code>crazy-clips</code>
+    </p>
   </div>
 
-  <p class="muted">Last updated: 2026-02-01</p>
+  <p class="muted">Last updated: 2026-02-02</p>
 </body>
 </html>
