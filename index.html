@@ -63,17 +63,21 @@
     <h2>TikTok API Products & scopes used</h2>
     <ul>
       <li><b>Login Kit</b>: authenticates the creator and obtains authorization via OAuth.</li>
-      <li><b>Content Posting (Inbox/Draft Upload)</b>: uploads videos to the creator's TikTok Inbox as drafts.</li>
+      <li><b>Content Posting API</b>: uploads clips to the creator's TikTok Inbox as drafts (video.upload) or posts directly to their profile (video.publish), based on the creator's choice.</li>
+      <li><b>User Info API</b>: reads basic profile info, bio, profile link, and account stats for display in the dashboard.</li>
     </ul>
 
     <h3>Scopes</h3>
     <ul>
-      <li><code>user.info.basic</code> — used to confirm the authenticated account.</li>
-      <li><code>video.upload</code> — used to upload videos to TikTok Inbox as drafts.</li>
+      <li><code>user.info.basic</code> — reads the creator's open ID, display name, and avatar.</li>
+      <li><code>user.info.profile</code> — reads bio, verified status, and profile link to display in the dashboard.</li>
+      <li><code>user.info.stats</code> — reads follower count, following count, total likes, and video count for the dashboard.</li>
+      <li><code>video.upload</code> — uploads a clip to the creator's TikTok Inbox as a draft for review before posting.</li>
+      <li><code>video.publish</code> — directly posts a clip to the creator's TikTok profile when the creator chooses Direct Post mode.</li>
     </ul>
 
     <p class="muted small">
-      Crazy Clips does not auto-publish content. Posting happens manually inside the TikTok app by the creator.
+      Creators choose between "Save as Draft" (video.upload) and "Direct Post" (video.publish) before each clip is submitted. No content is posted without the creator's explicit action.
     </p>
   </div>
 
@@ -105,7 +109,7 @@
 
   <div id="contact" class="box">
     <h2>Contact</h2>
-    <p>Email: <b><a href="mailto:7nickyeet7z@gmail.com">7nickyeet7z@gmail.com</a></b></p>
+    <p>Email: <b>7nickyeet7z@gmail.com</b></p>
   </div>
 
   <p class="muted">Last updated: 2026-04-06</p>
