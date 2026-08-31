@@ -65,6 +65,7 @@
       <li><b>Login Kit</b>: authenticates the creator and obtains authorization via OAuth.</li>
       <li><b>Content Posting API</b>: uploads clips to the creator's TikTok Inbox as drafts (video.upload) or posts directly to their profile (video.publish), based on the creator's choice.</li>
       <li><b>User Info API</b>: reads basic profile info, bio, profile link, and account stats for display in the dashboard.</li>
+      <li><b>Display API</b>: reads the creator's own posted videos and their performance metrics to show per-clip analytics in the dashboard.</li>
     </ul>
 
     <h3>Scopes</h3>
@@ -74,10 +75,11 @@
       <li><code>user.info.stats</code> — reads follower count, following count, total likes, and video count for the dashboard.</li>
       <li><code>video.upload</code> — uploads a clip to the creator's TikTok Inbox as a draft for review before posting.</li>
       <li><code>video.publish</code> — directly posts a clip to the creator's TikTok profile when the creator chooses Direct Post mode.</li>
+      <li><code>video.list</code> — reads the creator's own posted videos and their public performance metrics (views, likes, comments, shares) to show analytics in the dashboard and help the creator judge which clips performed best.</li>
     </ul>
 
     <p class="muted small">
-      Creators choose between "Save as Draft" (video.upload) and "Direct Post" (video.publish) before each clip is submitted. No content is posted without the creator's explicit action.
+      Creators choose between "Save as Draft" (video.upload) and "Direct Post" (video.publish), along with the caption, privacy level, and interaction settings, before any clip is submitted. Crazy Clips only ever posts to the creator's own authenticated account, and posting can be paused at any time.
     </p>
   </div>
 
@@ -112,6 +114,6 @@
     <p>Email: <b>7nickyeet7z@gmail.com</b></p>
   </div>
 
-  <p class="muted">Last updated: 2026-04-06</p>
+  <p class="muted">Last updated: 2026-08-31</p>
 </body>
 </html>

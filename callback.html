@@ -2,9 +2,89 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Crazy Clips</title>
-  <link rel="canonical" href="https://crazyclips.net/callback/" />
-  <meta http-equiv="refresh" content="0; url=/callback/" />
+  <link rel="icon" type="image/png" href="/icon.png">
+  <style>
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;max-width:560px;margin:80px auto;padding:0 20px;text-align:center;line-height:1.6;color:#111}
+    .icon{font-size:48px;margin-bottom:12px}
+    h1{margin:0 0 10px;font-size:24px}
+    .muted{color:#555;font-size:14px}
+    .small{font-size:13px}
+    a{color:#0b57d0}
+    .box{border:1px solid #ddd;border-radius:12px;padding:16px;margin:22px 0;text-align:left}
+    code{background:#f3f3f3;padding:8px 10px;border-radius:6px;display:block;word-break:break-all;font-size:12px;margin-top:8px}
+    .err{color:#b00020}
+    #manual{display:none}
+  </style>
 </head>
-<body><p>Redirecting to <a href="/callback/">crazyclips.net/callback/</a>…</p></body>
+<body>
+  <header style="display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:24px">
+    <img src="/icon.png" alt="Crazy Clips" style="width:44px;height:44px;border-radius:11px">
+    <span style="font-size:20px;font-weight:700;letter-spacing:-0.3px">Crazy Clips</span>
+  </header>
+
+  <div id="ok">
+    <div class="icon">✅</div>
+    <h1>Authorization successful</h1>
+    <p class="muted">Returning you to the Crazy Clips app…</p>
+    <div class="box" id="manual">
+      <b class="small">Didn't return automatically?</b>
+      <p class="small muted" style="margin:6px 0 0">Make sure Crazy Clips is running on your computer, then
+        <a href="#" id="retry">click here to retry</a>. If it still doesn't work, copy this authorization
+        code and paste it into the app:</p>
+      <code id="code"></code>
+    </div>
+  </div>
+
+  <div id="fail" style="display:none">
+    <div class="icon">⚠️</div>
+    <h1>Authorization failed</h1>
+    <p class="muted err" id="failmsg"></p>
+    <p class="small muted">Please return to the Crazy Clips app and try connecting again.</p>
+  </div>
+
+  <p class="muted small" style="margin-top:28px"><a href="/">← Back to Crazy Clips</a></p>
+
+<script>
+(function () {
+  var qs = window.location.search || "";
+  var params = new URLSearchParams(qs);
+  var error = params.get("error") || params.get("error_description");
+  var code = params.get("code");
+
+  if (error) {
+    document.getElementById("ok").style.display = "none";
+    document.getElementById("fail").style.display = "";
+    document.getElementById("failmsg").textContent = error;
+    return;
+  }
+
+  if (!code) {
+    document.getElementById("ok").style.display = "none";
+    document.getElementById("fail").style.display = "";
+    document.getElementById("failmsg").textContent =
+      "No authorization code was returned by TikTok.";
+    return;
+  }
+
+  // Hand the authorization code back to the Crazy Clips app running on this
+  // machine. The app completes the token exchange locally — the code is never
+  // sent to, or stored on, any Crazy Clips server.
+  var target = "http://localhost:5001/callback" + qs;
+  document.getElementById("code").textContent = code;
+  document.getElementById("retry").addEventListener("click", function (e) {
+    e.preventDefault();
+    window.location.replace(target);
+  });
+
+  // Reveal the manual fallback if we're still here shortly after redirecting.
+  setTimeout(function () {
+    document.getElementById("manual").style.display = "block";
+  }, 2500);
+
+  window.location.replace(target);
+})();
+</script>
+</body>
 </html>
